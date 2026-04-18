@@ -1,0 +1,11 @@
+.page {
+  background-color: var(--color-bg-base);
+  min-height: 60vh;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-border), transparent);
+  max-width: 600px;
+  margin: 0 auto;
+}

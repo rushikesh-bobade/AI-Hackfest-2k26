@@ -1,0 +1,156 @@
+.player {
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.headerIcon {
+  padding: var(--space-2);
+  background-color: var(--color-primary-muted);
+  border-radius: var(--radius-md);
+  color: var(--color-primary);
+}
+
+.title {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.voiceLabel {
+  font-family: var(--family-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-left: auto;
+}
+
+.waveform {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 60px;
+  padding: 0 var(--space-2);
+}
+
+.bar {
+  flex: 1;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-primary);
+  opacity: 0.6;
+  transition: height 0.1s ease;
+}
+
+.bar.active {
+  opacity: 1;
+  animation: wave 0.8s ease-in-out infinite;
+}
+
+.bar:nth-child(2n) { animation-delay: 0.1s; }
+.bar:nth-child(3n) { animation-delay: 0.2s; }
+.bar:nth-child(4n) { animation-delay: 0.15s; }
+.bar:nth-child(5n) { animation-delay: 0.05s; }
+
+@keyframes wave {
+  0%, 100% { transform: scaleY(0.4); }
+  50% { transform: scaleY(1); }
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.playBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  flex-shrink: 0;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.playBtn:hover {
+  background-color: var(--color-primary-hover);
+  transform: scale(1.05);
+}
+
+.progressWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.progressBar {
+  width: 100%;
+  height: 4px;
+  background-color: var(--color-bg-elevated);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.progressFill {
+  height: 100%;
+  background-color: var(--color-primary);
+  border-radius: var(--radius-full);
+  transition: width 0.3s linear;
+}
+
+.timeLabels {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--family-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.transcript {
+  margin-top: var(--space-2);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.transcriptToggle {
+  font-size: var(--text-sm);
+  color: var(--color-primary);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+  transition: color var(--transition-fast);
+}
+
+.transcriptToggle:hover {
+  color: var(--color-primary-hover);
+}
+
+.transcriptText {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  font-style: italic;
+  max-height: 120px;
+  overflow-y: auto;
+}

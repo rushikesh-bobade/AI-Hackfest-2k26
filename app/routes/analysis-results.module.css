@@ -1,0 +1,24 @@
+.page {
+  padding: var(--space-10) var(--space-8);
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.notFound {
+  text-align: center;
+  padding: var(--space-16) var(--space-8);
+}
+
+.notFound h1 {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.notFound p {
+  color: var(--color-text-secondary);
+}

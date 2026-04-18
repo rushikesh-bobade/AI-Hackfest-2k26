@@ -1,0 +1,75 @@
+:root {
+  /* Colors */
+  --color-bg-base: #0d0d0f;
+  --color-bg-surface: #141418;
+  --color-bg-elevated: #1c1c22;
+  --color-bg-overlay: #232329;
+
+  --color-primary: #dc143c;
+  --color-primary-hover: #ff1a4a;
+  --color-primary-muted: rgba(220, 20, 60, 0.15);
+  --color-primary-border: rgba(220, 20, 60, 0.4);
+
+  --color-text-primary: #f0f0f4;
+  --color-text-secondary: #a0a0b0;
+  --color-text-muted: #606070;
+  --color-text-accent: #dc143c;
+
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(255, 255, 255, 0.14);
+
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
+
+  /* Status */
+  --color-status-connected: #22c55e;
+  --color-status-disconnected: #ef4444;
+  --color-status-pending: #f59e0b;
+
+  /* Font Families */
+  --family-display: 'Space Grotesk', sans-serif;
+  --family-body: 'Space Grotesk', sans-serif;
+  --family-mono: 'JetBrains Mono', monospace;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Font sizes */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --shadow-crimson: 0 0 20px rgba(220, 20, 60, 0.2);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+}

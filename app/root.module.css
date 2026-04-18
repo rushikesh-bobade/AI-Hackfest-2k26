@@ -1,0 +1,22 @@
+.appWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-bg-base);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.main {
+  flex: 1;
+}
+
+.footer {
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-bg-surface);
+}
