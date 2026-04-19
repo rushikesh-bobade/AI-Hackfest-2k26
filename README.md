@@ -1,164 +1,101 @@
-# AI-Hackfest-2k26
+<div align="center">
+  <h1>📄 PaperShredder AI</h1>
+  <p>An AI-powered academic research assistant that ruthlessly fact-checks, cross-references, and critiques academic papers.</p>
+</div>
 
-PaperShredder AI is a modern React Router web application that simulates AI-driven academic paper analysis with a polished, production-style user experience.
+---
 
-The product flow includes authentication, upload and processing simulation, contradiction analysis, rebuttal generation, audio narration UI, wallet and rate-limit views, and historical analysis tracking.
+## 🚀 Overview
 
-## Table of Contents
+**PaperShredder AI** is a full-stack web application built for the **AI Hackfest**. It revolutionizes the academic peer-review process by ingesting research papers (PDFs), extracting their core claims, and evaluating their methodology using advanced multimodal AI.
 
-- Overview
-- Tech Stack
-- Product Features
-- Project Structure
-- Getting Started
-- Available Scripts
-- Build and Run
-- Environment Variables
-- Security Notes
-- Development Workflow
-- Deployment Notes
-- Roadmap
+Instead of just summarizing papers, PaperShredder acts as a deeply skeptical peer reviewer. It cross-references claims against known data and delivers a highly critical, narrated "Savage Peer Review" to expose potential methodological flaws or logical fallacies.
 
-## Overview
+## ✨ Key Features
 
-This repository powers a frontend-focused research review experience.
+- **Gemini-Powered Deconstruction:** Uses Google's Gemini Multimodal Vision API to parse PDFs, extract the boldest claims, and assign an overall Credibility Score.
+- **Contradiction Matrix:** Automatically cross-references extracted claims against established datasets to find scientific contradictions.
+- **Savage Peer Review:** Generates a highly critical, hyper-analytical roast of the paper's methodology.
+- **Interactive Voice Agent:** Integrates ElevenLabs text-to-speech to narrate the "Savage Peer Review" in a realistic, podcast-style format.
+- **Snowflake Data Persistence:** Securely stores user profiles, authentication states, and historical paper analyses using Snowflake REST APIs.
+- **Token Economy / Wallet:** Integrates a Solana-inspired token economy where users spend "SHRED" tokens to perform analyses, complete with a rate-limiting system.
 
-Current implementation focus:
+## 🛠 Tech Stack
 
-- Clean, modular UI architecture
-- Route-based page composition
-- Context-driven state management
-- Mock-backed analysis pipeline and rate-limit behavior
-- SSR-capable build with React Router
-
-## Tech Stack
-
+**Frontend:**
 - React 19
-- React Router 7
-- TypeScript 6
-- Vite 7
-- CSS Modules
-- Lucide React icons
+- React Router v7 (SSR)
+- Vite
+- TypeScript
+- Vanilla CSS Modules (Tailwind-free, highly customized UI)
+- Lucide React (Icons)
 
-## Product Features
+**Backend / APIs:**
+- **Google Gemini API** (`gemini-1.5-flash`) for LLM reasoning and multimodal extraction.
+- **ElevenLabs API** for text-to-speech generation.
+- **Snowflake SQL API** for robust data persistence and user authentication.
+- Node.js (via React Router Server output)
 
-- Login flow with demo credentials
-- Drag-and-drop PDF intake UI
-- Multi-step analysis processing experience
-- Analysis results dashboard including:
-	- Summary card
-	- Credibility score
-	- Claims list
-	- Contradiction matrix
-	- Rebuttal card
-	- Audio waveform player
-	- Share/export actions
-- History page with search, sorting, and pagination
-- Wallet and usage/rate-limit dashboard
-- Settings panels for voice, analysis preferences, APIs, and privacy actions
-
-## Project Structure
-
-High-level layout:
-
-- app
-	- blocks: reusable feature blocks grouped by page/domain
-	- routes: route-level page components
-	- hooks: state and utility hooks
-	- data: mock domain models and sample datasets
-	- styles: reset, global, and theme tokens
-- public: static assets
-- prompts: local prompt assets (ignored in Git)
-- .agents: local assistant assets (ignored in Git)
-
-## Getting Started
+## 📦 Getting Started
 
 ### Prerequisites
-
-- Node.js 20 or newer
-- npm 10 or newer
+- Node.js 20+
+- npm 10+
+- Accounts for Gemini, ElevenLabs, and Snowflake (for API keys)
 
 ### Installation
 
-```bash
-npm install
-```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/PaperShredder-AI.git
+   cd PaperShredder-AI
+   ```
 
-### Start Development Server
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-```bash
-npm run dev
-```
+3. **Environment Setup:**
+   Create a `.env` file in the root directory and add your credentials:
+   ```env
+   # Snowflake Connection
+   SNOWFLAKE_ACCOUNT="your_account_id"
+   SNOWFLAKE_USER="your_user"
+   SNOWFLAKE_PASSWORD="your_password"
+   SNOWFLAKE_DATABASE="RADIO_STATION_DB"
+   SNOWFLAKE_SCHEMA="PUBLIC"
+   SNOWFLAKE_WAREHOUSE="PAPER_WH"
 
-Default local URL is shown in terminal output.
+   # ElevenLabs Integration
+   NEXT_PUBLIC_ELEVENLABS_AGENT_ID="your_agent_id"
+   VITE_ELEVENLABS_AGENT_ID="your_client_agent_id"
+   ELEVENLABS_API_KEY="sk_your_key"
 
-## Available Scripts
+   # Gemini Multimodal
+   GEMINI_API_KEY="your_gemini_key"
+   ```
 
-- npm run dev: Start development server
-- npm run build: Create production build
-- npm run start: Serve production build
-- npm run typecheck: Generate route types and run TypeScript checks
+4. **Start the Development Server:**
+   ```bash
+   npm run dev
+   ```
+   The application will be available at `http://localhost:5173`.
 
-## Build and Run
+## 🏗 Project Architecture
 
-Build for production:
+- `/app/routes/` - Page-level components defining the application's URL structure.
+- `/app/blocks/` - Reusable, domain-specific UI components (e.g., `analysis-results`, `home`, `settings`).
+- `/app/services/` - Server-side only modules for interacting with external APIs (`gemini.server.ts`, `snowflake.server.ts`, `elevenlabs.server.ts`).
+- `/app/hooks/` - Client-side state management and Context providers (`use-auth`, `use-analysis-store`).
 
-```bash
-npm run build
-```
+## 🤝 Contributing
 
-Run production server:
+We follow a strict branch-based development workflow:
+1. Create a new branch for your feature (`git checkout -b feature/your-feature`)
+2. Commit your changes (`git commit -m 'feat: add amazing feature'`)
+3. Push to the branch (`git push origin feature/your-feature`)
+4. Open a Pull Request
 
-```bash
-npm run start
-```
-
-## Environment Variables
-
-No required environment variables are needed for the current implementation.
-
-The app is currently mock-backed and does not call external AI providers or blockchain services at runtime.
-
-If you later integrate real services, add a local environment file and keep credentials out of client code.
-
-## Security Notes
-
-- This repository intentionally includes demo-only login values for local testing UX.
-- Do not reuse demo credentials in real environments.
-- Keep real API keys and private keys only in secure backend environments.
-- Never embed secrets inside frontend source code.
-
-## Development Workflow
-
-Team branching standard for this repository:
-
-- Create a new branch for each feature or bug fix
-- Keep main as stable integration branch
-- Push branches and open pull requests for review
-
-Suggested branch naming:
-
-- feature/short-description
-- fix/short-description
-- chore/short-description
-
-## Deployment Notes
-
-This app supports SSR-oriented build output via React Router build tooling.
-
-Typical deployment flow:
-
-1. npm ci
-2. npm run typecheck
-3. npm run build
-4. npm run start (or platform equivalent process manager)
-
-## Roadmap
-
-Planned next-stage enhancements:
-
-- Replace mock analysis with real service integrations
-- Add persistent auth and session management
-- Add backend API layer and secure credential handling
-- Add automated test coverage (unit and integration)
-- Add CI quality gates for linting, type checks, and build
+## 📜 License
+This project was created for the AI Hackfest 2026. All rights reserved.
