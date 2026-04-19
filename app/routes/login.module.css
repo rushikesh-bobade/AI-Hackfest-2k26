@@ -190,3 +190,20 @@
 .solanaIcon {
   color: var(--color-info);
 }
+
+.toggleBtn {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  cursor: pointer;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  padding: var(--space-2) 0;
+  margin-bottom: var(--space-4);
+  transition: color var(--transition-fast);
+}
+
+.toggleBtn:hover {
+  color: var(--color-primary-hover);
+  text-decoration: underline;
+}

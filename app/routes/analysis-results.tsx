@@ -7,14 +7,21 @@ import { ExtractedClaimsSection } from "~/blocks/analysis-results/extracted-clai
 import { ContradictionMatrix } from "~/blocks/analysis-results/contradiction-matrix";
 import { RebuttalCard } from "~/blocks/analysis-results/rebuttal-card";
 import { AudioPlayerWithWaveform } from "~/blocks/analysis-results/audio-player-with-waveform";
+import { ElevenLabsVoiceAgent } from "~/blocks/analysis-results/elevenlabs-voice-agent";
 import { ShareResults } from "~/blocks/analysis-results/share-results";
 
 export function meta(_: Route.MetaArgs) {
-  return [{ title: "Analysis Results \u2014 PaperShredder AI" }];
+  return [{ title: "Analysis Results — PaperShredder AI" }];
 }
 
 export default function AnalysisResultsPage({ params }: Route.ComponentProps) {
-  const { getAnalysisById, claims, contradictions, rebuttal } = useAnalysisStore();
+  const {
+    getAnalysisById,
+    getClaimsForAnalysis,
+    getContradictionsForAnalysis,
+    getRebuttalForAnalysis,
+    getAudioUrlForAnalysis,
+  } = useAnalysisStore();
   const analysis = getAnalysisById(params.analysisId);
 
   if (!analysis) {
@@ -28,6 +35,11 @@ export default function AnalysisResultsPage({ params }: Route.ComponentProps) {
     );
   }
 
+  const claims = getClaimsForAnalysis(params.analysisId);
+  const contradictions = getContradictionsForAnalysis(params.analysisId);
+  const rebuttal = getRebuttalForAnalysis(params.analysisId);
+  const audioUrl = getAudioUrlForAnalysis(params.analysisId);
+
   return (
     <div className={styles.page}>
       <PaperSummaryCard analysis={analysis} />
@@ -39,8 +51,15 @@ export default function AnalysisResultsPage({ params }: Route.ComponentProps) {
       <ExtractedClaimsSection claims={claims} />
       <ContradictionMatrix contradictions={contradictions} />
       <RebuttalCard rebuttal={rebuttal} />
-      <AudioPlayerWithWaveform rebuttal={rebuttal} />
+      <AudioPlayerWithWaveform rebuttal={rebuttal} audioUrl={audioUrl} />
       <ShareResults analysisId={analysis.id} title={analysis.title} score={analysis.credibilityScore} />
+      
+      {/* ElevenLabs Conversational AI — floating voice agent */}
+      <ElevenLabsVoiceAgent
+        rebuttal={rebuttal}
+        paperTitle={analysis.title}
+        credibilityScore={analysis.credibilityScore}
+      />
     </div>
   );
 }
