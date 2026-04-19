@@ -63,9 +63,9 @@ export default function WalletPage() {
         <div className={styles.statCard}>
           <span className={styles.statLabel}>Tier</span>
           <span className={classnames(styles.statValue, styles.statValuePrimary)}>
-            {user.tier.charAt(0).toUpperCase() + user.tier.slice(1)}
+            {(user.tier || "free").charAt(0).toUpperCase() + (user.tier || "free").slice(1)}
           </span>
-          <span className={styles.statMeta}>{user.walletAddress}</span>
+          <span className={styles.statMeta}>{user.walletAddress || "0x..."}</span>
         </div>
       </div>
 

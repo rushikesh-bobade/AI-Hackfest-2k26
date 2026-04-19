@@ -6,18 +6,8 @@ import type { RateLimitInfo } from "~/data/types";
 const DAILY_USAGE_KEY = "papershredder_daily_usage";
 
 function getDailyUsage(): { count: number; date: string } {
-  if (typeof window === "undefined") return { count: 0, date: "" };
-  try {
-    const raw = localStorage.getItem(DAILY_USAGE_KEY);
-    if (!raw) return { count: 0, date: new Date().toDateString() };
-    const data = JSON.parse(raw);
-    if (data.date !== new Date().toDateString()) {
-      return { count: 0, date: new Date().toDateString() };
-    }
-    return data;
-  } catch {
-    return { count: 0, date: new Date().toDateString() };
-  }
+  // Hackathon demo mode: disable rate limiting
+  return { count: 0, date: new Date().toDateString() };
 }
 
 function setDailyUsage(count: number) {
